@@ -8,7 +8,7 @@
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
 
-int my_printf(char *str, ...);
+int my_printf(const char *restrict format, ...);
 
 void redirect_all_std(void)
 {
