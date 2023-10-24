@@ -5,7 +5,8 @@
 ** Returns if a string contains only printable characters
 */
 
-#include "../include/my.h"
+#include "my_strings.h"
+#include "my_ctype.h"
 #include <stddef.h>
 
 int my_str_isprintable(char const *str)

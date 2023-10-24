@@ -60,10 +60,11 @@ SRC := $(CTYPE_FUNCS) \
 	   $(SORT_FUNCS) \
 	   $(STDIO_FUNCS) \
 	   $(STRINGS_FUNCS)
-C_FLAGS := -Wall -Wextra -Werror -c
+CPPFLAGS := -iquote "include"
+C_FLAGS := -Wall -Wextra -Werror
 OBJ := $(SRC:.c=.o)
 LIB_DIR := ../
-INCLUDE_DIR := ../include/
+INCLUDE_DIR := ../../include/
 NAME := libmy.a
 
 .PHONY: all clean fclean re
@@ -71,15 +72,15 @@ NAME := libmy.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc $(C_FLAGS) $(SRC)
-	@ar rc $(NAME) $(OBJ)
+	@gcc -c $(C_FLAGS) $(CPPFLAGS) $(SRC)
+	@ar rc -o $(NAME) $(OBJ)
 	@mkdir -p $(LIB_DIR)
 	@cp $@ $(LIB_DIR)
 	@mkdir -p $(INCLUDE_DIR)
-	@cp include/my.h $(INCLUDE_DIR)
+	@cp include/*.h $(INCLUDE_DIR)
 
 clean:
-	@rm -f $(OBJ) $(TARGET)
+	@rm -f $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME)

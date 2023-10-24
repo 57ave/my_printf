@@ -5,7 +5,7 @@
 ** Returns the corresponding uppercase character
 */
 
-#include "../include/my.h"
+#include "my_ctype.h"
 
 char my_toupper(char c)
 {

@@ -5,7 +5,8 @@
 ** Returns if the string only contains digit
 */
 
-#include "../include/my.h"
+#include "my_strings.h"
+#include "my_ctype.h"
 #include <stddef.h>
 
 int my_str_isnum(char const *str)

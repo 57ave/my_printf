@@ -5,7 +5,8 @@
 ** Capitalizes first letter of each word
 */
 
-#include "../include/my.h"
+#include "my_ctype.h"
+#include "my_strings.h"
 #include <stddef.h>
 
 static void handle_character(char *str, int index)

@@ -5,7 +5,8 @@
 ** Returns if a string only contains alpha char or not
 */
 
-#include "../include/my.h"
+#include "my_strings.h"
+#include "my_ctype.h"
 #include <stddef.h>
 
 int my_str_isalpha(char const *str)

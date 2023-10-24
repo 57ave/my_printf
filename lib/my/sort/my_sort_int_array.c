@@ -5,7 +5,7 @@
 ** Sorts an integer array in ascending order
 */
 
-#include "../include/my.h"
+#include "my_sort.h"
 
 static void swap_if_greater(int *array, int j)
 {

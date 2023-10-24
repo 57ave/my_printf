@@ -5,10 +5,10 @@
 ** Converts and displays a decimal number into a given base
 */
 
-#include "../include/my.h"
+#include "my_strings.h"
+#include "my_stdio.h"
 #include <stddef.h>
 #include <sys/types.h>
-#include <unistd.h>
 
 static void convert_to_str(char *str, const char *base, size_t len, uint n)
 {

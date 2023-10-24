@@ -5,7 +5,9 @@
 ** Put number
 */
 
-#include "../include/my.h"
+#include "my_strings.h"
+#include "my_stdio.h"
+#include "my_math.h"
 
 int my_put_nbr(int nb)
 {

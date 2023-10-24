@@ -5,7 +5,9 @@
 ** Function that prints a string. If non-printable, prints hexa-value
 */
 
-#include "../include/my.h"
+#include "my_strings.h"
+#include "my_stdio.h"
+#include "my_ctype.h"
 #include <stddef.h>
 #include <sys/types.h>
 

@@ -5,7 +5,7 @@
 ** ALlocates memory and copies the string given as an argument in it.
 */
 
-#include "../include/my.h"
+#include "my_strings.h"
 #include <stddef.h>
 #include <stdlib.h>
 

@@ -5,7 +5,6 @@
 ** Compare the first n char of two strings
 */
 
-#include "../include/my.h"
 #include <stddef.h>
 #include <sys/types.h>
 
