@@ -8,7 +8,7 @@
 #ifndef MY_PRINTF_H_
     #define MY_PRINTF_H_
 typedef struct conversion_spec {
-    char flag_character;
+    char *flag_characters;
     int field_width;
     int precision;
     int length_modifier;

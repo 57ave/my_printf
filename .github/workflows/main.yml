@@ -23,6 +23,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Checking coding-style
+
         run: |
           check.sh $(pwd) $(pwd)
           cat $REPORT_FILENAME | while read LINE; do
@@ -39,6 +40,7 @@ jobs:
     needs: [check_coding_style]
     runs-on: ubuntu-latest
     container:
+
       image: yanis897349/lw-epitest-docker
 
     steps:
@@ -62,6 +64,7 @@ jobs:
     needs: [check_program_compilation]
     runs-on: ubuntu-latest
     container:
+
       image: yanis897349/lw-epitest-docker
 
     steps:
@@ -71,7 +74,6 @@ jobs:
       - name: Launch unit tests
         timeout-minutes: 2
         run: make tests_run
-
   push_to_mirror:
     needs: [run_tests]
     runs-on: ubuntu-latest
