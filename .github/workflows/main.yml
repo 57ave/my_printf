@@ -1,0 +1,90 @@
+name: my_printf
+
+on:
+  push:
+    branches-ignore:
+      - "ga-ignore-**"
+  pull_request:
+    branches-ignore:
+      - "ga-ignore-**"
+
+env:
+  MIRROR_URL: git@github.com:EpitechPromo2028/B-CPE-101-PAR-1-3-myprintf-gustave.delecroix.git
+  EXECUTABLES: my_printf
+
+jobs:
+  check_coding_style:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/epitech/coding-style-checker:latest
+    env:
+      REPORT_FILENAME: coding-style-reports.log
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Checking coding-style
+        run: |
+          check.sh $(pwd) $(pwd)
+          cat $REPORT_FILENAME | while read LINE; do
+              TYPE=$(echo $LINE | cut -d ':' -f 3 | tr -d ' ')
+              FILE=$(echo $LINE | cut -d ':' -f 1)
+              AT=$(echo $LINE | cut -d ':' -f 2)
+              ERROR=$(echo $LINE | cut -d ':' -f 4)
+              echo "::error file=$FILE,line=$AT,title=$TYPE coding style error::$ERROR"
+          done
+          if [[ -s $REPORT_FILENAME ]]; then
+            exit 1
+          fi
+  check_program_compilation:
+    needs: [check_coding_style]
+    runs-on: ubuntu-latest
+    container:
+      image: yanis897349/lw-epitest-docker
+
+    steps:
+      - name: CHeckout repository
+        uses: actions/checkout@v4
+      - name: Building project
+        timeout-minutes: 2
+        run: make
+      - name: Clean
+        run: make clean
+      - name: check_executables
+        run: |
+          EXECS=(${EXECUTABLES//,/ })
+          for file in ${EXECS[@]}; do
+            if [ ! -x $file ]; then
+              echo "::error title=Exec not found $file::"
+              exit 1
+            fi
+          done
+  run_tests:
+    needs: [check_program_compilation]
+    runs-on: ubuntu-latest
+    container:
+      image: yanis897349/lw-epitest-docker
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Launch unit tests
+        timeout-minutes: 2
+        run: make tests_run
+
+  push_to_mirror:
+    needs: [run_tests]
+    runs-on: ubuntu-latest
+
+    if: ${{ github.event_name == 'push' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url: ${{ env.MIRROR_URL }}
+          ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
