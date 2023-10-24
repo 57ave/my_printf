@@ -1,0 +1,19 @@
+# Logs
+*.gcda
+*.gcno
+*.log
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Libraries
+*.la
+
+# Executables
+*.out
+
+# Epitech unallowed files
+main.c
