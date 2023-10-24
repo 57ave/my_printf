@@ -5,9 +5,7 @@
 ## Makefile
 ##
 
-NAME =	my_printf
-
-LIB = libmy.a
+NAME =	libmy.a
 
 CPPFLAGS += -iquote "include"
 
@@ -28,7 +26,7 @@ OBJ = $(MAIN:.c=.o) $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(CPPFLAGS)
+	ar rc $(OBJ) -o $(NAME) $(CPPFLAGS)
 
 OBJ_TEST = $(TEST) $(SRC:.c=.o)
 
