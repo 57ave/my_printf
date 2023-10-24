@@ -14,6 +14,3 @@
 
 # Executables
 *.out
-
-# Epitech unallowed files
-main.c
