@@ -84,6 +84,7 @@ $(NAME): $(OBJ)
 	@cp -r ./ctype/my_ctype.h $(INCLUDE_DIR)
 	@cp -r ./stdio/my_stdio.h $(INCLUDE_DIR)
 	@cp -r ./strings/my_strings.h $(INCLUDE_DIR)
+	@cp -r ./stdio/printf/my_printf.h $(INCLUDE_DIR)
 
 clean:
 	@rm -f $(OBJ)

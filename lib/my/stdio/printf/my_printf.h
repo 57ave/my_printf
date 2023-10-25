@@ -26,6 +26,7 @@ static const format_func_t FORMAT_TAB[] = {
     {'\n', NULL}
 };
 
+int my_printf(char const *format, ...);
 void **get_arg_tab(va_list ap, char const *format);
 
 #endif
