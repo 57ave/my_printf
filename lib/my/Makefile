@@ -65,7 +65,7 @@ SRC := $(CTYPE_FUNCS) \
 	   $(STDIO_FUNCS_PRINTF) \
 	   $(STRINGS_FUNCS)
 CPPFLAGS := -iquote "include"
-C_FLAGS := -Wall -Wextra -Werror
+C_FLAGS := -Wall -Wextra -Werror -I ./include/
 OBJ := $(SRC:.c=.o)
 LIB_DIR := ../
 INCLUDE_DIR := ../../include/
@@ -81,7 +81,7 @@ $(NAME): $(OBJ)
 	@mkdir -p $(LIB_DIR)
 	@cp $@ $(LIB_DIR)
 	@mkdir -p $(INCLUDE_DIR)
-	@cp include/*.h $(INCLUDE_DIR)
+	@cp -r ./include/ $(INCLUDE_DIR)
 
 clean:
 	@rm -f $(OBJ)
@@ -89,4 +89,5 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 
-re : fclean all
+re:	fclean
+	all

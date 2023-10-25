@@ -28,8 +28,8 @@ void **get_arg_tab(va_list ap, char const *format)
     if (arg_tab == NULL) {
         return NULL;
     }
-    for (int i = 0; i < size_tab; i++) {
-        arg_tab[i] = va_list(ap, void *);
+    for (int i = 0; i < tab_size; i++) {
+        arg_tab[i] = va_arg(ap, void *);
     }
     va_end(ap);
     return arg_tab;
