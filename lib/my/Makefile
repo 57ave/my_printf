@@ -30,6 +30,9 @@ STDIO_FUNCS := ./stdio/my_putstr.c \
 			   ./stdio/my_putstr_error.c \
 			   ./stdio/my_putchar_error.c
 
+STDIO_FUNCS_PRINTF := ./stdio/printf/my_printf.c \
+					  ./stdio/printf/arguments_tab.c
+
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
 				 ./strings/my_strcmp.c \
@@ -59,6 +62,7 @@ SRC := $(CTYPE_FUNCS) \
 	   $(MATH_FUNCS) \
 	   $(SORT_FUNCS) \
 	   $(STDIO_FUNCS) \
+	   $(STDIO_FUNCS_PRINTF) \
 	   $(STRINGS_FUNCS)
 CPPFLAGS := -iquote "include"
 C_FLAGS := -Wall -Wextra -Werror
