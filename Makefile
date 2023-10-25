@@ -5,44 +5,33 @@
 ## Makefile
 ##
 
-NAME =	libmy.a
-
 CPPFLAGS += -iquote "include"
 
 CFLAGS = -Wall -Wextra
 
 TEST_FLAGS = --coverage -lcriterion
 
-MAIN =	src/main.c 	\
-
-SRC = 	src/my_printf.c \
-
 TEST_NAME = unit_tests
 
-TEST = tests/test_printf.c \
+TEST_SRC = tests/test_printf.c \
 
-OBJ = $(MAIN:.c=.o) $(SRC:.c=.o)
-
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	ar rc $(OBJ) -o $(NAME) $(CPPFLAGS)
-
-OBJ_TEST = $(TEST) $(SRC:.c=.o)
+all:
+	make -C ./lib/my/
 
 tests_run: all
-	$(CC) $(OBJ_TEST) -o $(TEST_NAME) $(TEST_FLAGS) $(CPPFLAGS)
-	./unit_tests
+	$(CC) $(TEST_SRC) -o $(TEST_NAME) $(CFLAGS) $(TEST_FLAGS) $(CPPFLAGS)
+	./$(TEST_NAME)
 
 clean:
-	$(RM) $(OBJ)
+	make clean -C ./lib/my/
 
 fclean: clean
-	$(RM) $(NAME)
+	make clean -C ./lib/my/
+	rm -f $(TEST_NAME)
 
 debug: CFLAGS += -ggdb3
 debug: all
 
 re: fclean all
 
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re debug tests_run
