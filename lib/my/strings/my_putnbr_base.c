@@ -5,8 +5,8 @@
 ** Converts and displays a decimal number into a given base
 */
 
-#include "my_strings.h"
-#include "my_stdio.h"
+#include "strings/my_strings.h"
+#include "stdio/my_stdio.h"
 #include <stddef.h>
 #include <sys/types.h>
 

@@ -5,7 +5,7 @@
 ** Parse string to int
 */
 
-#include "my_ctype.h"
+#include "ctype/my_ctype.h"
 #include <limits.h>
 
 static int get_start(char const *str)

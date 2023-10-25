@@ -5,8 +5,8 @@
 ** Returns if the string only contains lowercase alpha char
 */
 
-#include "my_strings.h"
-#include "my_ctype.h"
+#include "strings/my_strings.h"
+#include "ctype/my_ctype.h"
 #include <stddef.h>
 
 int my_str_islower(char const *str)

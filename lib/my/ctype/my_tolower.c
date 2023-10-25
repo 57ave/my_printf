@@ -5,7 +5,7 @@
 ** Return the corresponding lowercase character
 */
 
-#include "my_ctype.h"
+#include "ctype/my_ctype.h"
 
 char my_tolower(char c)
 {

@@ -5,7 +5,7 @@
 ** Print a memory trace
 */
 
-#include "my_stdio.h"
+#include "stdio/my_stdio.h"
 
 int my_showmem(char const *str, int size)
 {

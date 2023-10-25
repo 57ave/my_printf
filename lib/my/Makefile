@@ -64,8 +64,7 @@ SRC := $(CTYPE_FUNCS) \
 	   $(STDIO_FUNCS) \
 	   $(STDIO_FUNCS_PRINTF) \
 	   $(STRINGS_FUNCS)
-CPPFLAGS := -iquote "include"
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -I .
 OBJ := $(SRC:.c=.o)
 LIB_DIR := ../
 INCLUDE_DIR := ../../include/
@@ -80,7 +79,11 @@ $(NAME): $(OBJ)
 	@mkdir -p $(LIB_DIR)
 	@cp $@ $(LIB_DIR)
 	@mkdir -p $(INCLUDE_DIR)
-	@cp -r ./include/ $(INCLUDE_DIR)
+	@cp -r ./math/my_math.h $(INCLUDE_DIR)
+	@cp -r ./sort/my_sort.h $(INCLUDE_DIR)
+	@cp -r ./ctype/my_ctype.h $(INCLUDE_DIR)
+	@cp -r ./stdio/my_stdio.h $(INCLUDE_DIR)
+	@cp -r ./strings/my_strings.h $(INCLUDE_DIR)
 
 clean:
 	@rm -f $(OBJ)

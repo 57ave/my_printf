@@ -5,8 +5,8 @@
 ** Splits a string into words and returns an array of these words.
 */
 
-#include "my_ctype.h"
-#include "my_strings.h"
+#include "ctype/my_ctype.h"
+#include "strings/my_strings.h"
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdbool.h>
