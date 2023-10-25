@@ -10,7 +10,7 @@
 *.elf
 
 # Libraries
-*.la
+*.a
 
 # Executables
 *.out
