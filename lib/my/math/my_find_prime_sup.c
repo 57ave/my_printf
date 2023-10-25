@@ -5,7 +5,7 @@
 ** Returns the smallest prime number >= args
 */
 
-#include "my_math.h"
+#include "math/my_math.h"
 
 int my_find_prime_sup(int nb)
 {

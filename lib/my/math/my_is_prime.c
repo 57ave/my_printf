@@ -5,7 +5,7 @@
 ** Returns if a number is prime
 */
 
-#include "my_math.h"
+#include "math/my_math.h"
 
 int my_is_prime(int nb)
 {

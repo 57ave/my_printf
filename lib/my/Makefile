@@ -30,6 +30,9 @@ STDIO_FUNCS := ./stdio/my_putstr.c \
 			   ./stdio/my_putstr_error.c \
 			   ./stdio/my_putchar_error.c
 
+STDIO_FUNCS_PRINTF := ./stdio/printf/my_printf.c \
+					  ./stdio/printf/arguments_tab.c
+
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
 				 ./strings/my_strcmp.c \
@@ -59,9 +62,9 @@ SRC := $(CTYPE_FUNCS) \
 	   $(MATH_FUNCS) \
 	   $(SORT_FUNCS) \
 	   $(STDIO_FUNCS) \
+	   $(STDIO_FUNCS_PRINTF) \
 	   $(STRINGS_FUNCS)
-CPPFLAGS := -iquote "include"
-C_FLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -I .
 OBJ := $(SRC:.c=.o)
 LIB_DIR := ../
 INCLUDE_DIR := ../../include/
@@ -72,12 +75,15 @@ NAME := libmy.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc -c $(C_FLAGS) $(CPPFLAGS) $(SRC)
-	@ar rc -o $(NAME) $(OBJ)
+	ar rc $(NAME) $(OBJ)
 	@mkdir -p $(LIB_DIR)
 	@cp $@ $(LIB_DIR)
 	@mkdir -p $(INCLUDE_DIR)
-	@cp include/*.h $(INCLUDE_DIR)
+	@cp -r ./math/my_math.h $(INCLUDE_DIR)
+	@cp -r ./sort/my_sort.h $(INCLUDE_DIR)
+	@cp -r ./ctype/my_ctype.h $(INCLUDE_DIR)
+	@cp -r ./stdio/my_stdio.h $(INCLUDE_DIR)
+	@cp -r ./strings/my_strings.h $(INCLUDE_DIR)
 
 clean:
 	@rm -f $(OBJ)
@@ -85,4 +91,5 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 
-re : fclean all
+re:	fclean
+	all

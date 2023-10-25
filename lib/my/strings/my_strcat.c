@@ -5,7 +5,7 @@
 ** Concatenate two strings
 */
 
-#include "my_strings.h"
+#include "strings/my_strings.h"
 #include <stddef.h>
 
 char *my_strcat(char *dest, char const *src)

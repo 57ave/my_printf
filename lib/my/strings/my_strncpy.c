@@ -5,7 +5,7 @@
 ** Copies n char from a string into another
 */
 
-#include "my_strings.h"
+#include "strings/my_strings.h"
 #include <stddef.h>
 
 char *my_strncpy(char *dest, char const *src, int n)

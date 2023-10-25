@@ -5,7 +5,7 @@
 ** Find the occurences of a sub-string in a string
 */
 
-#include "my_strings.h"
+#include "strings/my_strings.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <strings.h>
