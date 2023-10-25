@@ -44,7 +44,7 @@ jobs:
       image: yanis897349/lw-epitest-docker
 
     steps:
-      - name: CHeckout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
       - name: Building project
         timeout-minutes: 2
@@ -53,13 +53,10 @@ jobs:
         run: make clean
       - name: check_executables
         run: |
-          EXECS=(${EXECUTABLES//,/ })
-          for file in ${EXECS[@]}; do
-            if [ ! -x $file ]; then
-              echo "::error title=Exec not found $file::"
-              exit 1
-            fi
-          done
+          if [ ! -s $LIBRARY_FILENAME ]; then
+            echo "::error title=Library not found::"
+            exit 1
+          fi
   run_tests:
     needs: [check_program_compilation]
     runs-on: ubuntu-latest
