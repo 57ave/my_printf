@@ -65,7 +65,7 @@ SRC := $(CTYPE_FUNCS) \
 	   $(STDIO_FUNCS_PRINTF) \
 	   $(STRINGS_FUNCS)
 CPPFLAGS := -iquote "include"
-C_FLAGS := -Wall -Wextra -Werror -I ./include/
+CFLAGS := -Wall -Wextra -Werror
 OBJ := $(SRC:.c=.o)
 LIB_DIR := ../
 INCLUDE_DIR := ../../include/
@@ -76,8 +76,7 @@ NAME := libmy.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc -c $(C_FLAGS) $(CPPFLAGS) $(SRC)
-	@ar rc -o $(NAME) $(OBJ)
+	ar rc $(NAME) $(OBJ)
 	@mkdir -p $(LIB_DIR)
 	@cp $@ $(LIB_DIR)
 	@mkdir -p $(INCLUDE_DIR)
