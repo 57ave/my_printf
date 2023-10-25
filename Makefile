@@ -26,7 +26,6 @@ clean:
 	make clean -C ./lib/my/
 
 fclean: clean
-	make clean -C ./lib/my/
 	rm -f $(TEST_NAME)
 
 debug: CFLAGS += -ggdb3
