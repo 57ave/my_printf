@@ -29,8 +29,8 @@ int call_format_handling(char const *format, void **arg_tab)
     int size_read = 0;
 
     for (int i_fmt = 0; format[i_fmt] != '\0'; i_fmt++) {
-        if (format[i_fmt] == %) {
-            size_read += format_handling(format, i, arg_tab);
+        if (format[i_fmt] == '%') {
+            size_read += format_handling(format, i_fmt, arg_tab);
         }
     }
     return size_read;
