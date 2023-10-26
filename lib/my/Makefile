@@ -25,15 +25,16 @@ MATH_FUNCS := ./math/my_getnbr.c \
 SORT_FUNCS := ./sort/my_swap.c \
 			  ./sort/my_sort_int_array.c
 
-STDIO_FUNCS := ./stdio/my_putstr.c \
-			   ./stdio/my_put_nbr.c \
-			   ./stdio/my_putchar.c \
-			   ./stdio/my_putstr_error.c \
-			   ./stdio/my_putchar_error.c
+IO_FUNCS := ./io/my_putstr.c \
+			./io/my_put_nbr.c \
+			./io/my_putchar.c \
+			./io/my_putstr_error.c \
+			./io/my_putchar_error.c \
+			./io/my_put_float.c
 
-STDIO_FUNCS_PRINTF := ./stdio/printf/my_printf.c \
-					  ./stdio/printf/arguments_tab.c \
-					  ./stdio/printf/decimal_conversion.c
+IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
+					./io/printf/arguments_tab.c \
+					./io/printf/decimal_conversion.c
 
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
@@ -63,8 +64,8 @@ STRINGS_FUNCS := ./strings/my_revstr.c \
 SRC := $(CTYPE_FUNCS) \
 	   $(MATH_FUNCS) \
 	   $(SORT_FUNCS) \
-	   $(STDIO_FUNCS) \
-	   $(STDIO_FUNCS_PRINTF) \
+	   $(IO_FUNCS) \
+	   $(IO_FUNCS_PRINTF) \
 	   $(STRINGS_FUNCS)
 CFLAGS := -Wall -Wextra -Werror -I .
 OBJ := $(SRC:.c=.o)
@@ -83,9 +84,9 @@ $(NAME): $(OBJ)
 	@mkdir -p $(INCLUDE_DIR)
 	@cp -r ./sort/my_sort.h $(INCLUDE_DIR)
 	@cp -r ./ctype/my_ctype.h $(INCLUDE_DIR)
-	@cp -r ./stdio/my_stdio.h $(INCLUDE_DIR)
+	@cp -r ./io/my_io.h $(INCLUDE_DIR)
 	@cp -r ./strings/my_strings.h $(INCLUDE_DIR)
-	@cp -r ./stdio/printf/my_printf.h $(INCLUDE_DIR)
+	@cp -r ./io/printf/my_printf.h $(INCLUDE_DIR)
 
 clean:
 	@rm -f $(OBJ)

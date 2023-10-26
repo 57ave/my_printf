@@ -6,7 +6,7 @@
 */
 
 #include "my_printf.h"
-#include "stdio/my_stdio.h"
+#include "io/my_stdio.h"
 
 int decimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab)
 {

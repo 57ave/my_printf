@@ -8,7 +8,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include "my_printf.h"
-#include "stdio/my_stdio.h"
+#include "io/my_stdio.h"
 
 int format_handling(char const *format, int indice, void **arg_tab)
 {

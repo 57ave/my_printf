@@ -5,7 +5,7 @@
 ** Displays if n is negative
 */
 
-#include "stdio/my_stdio.h"
+#include "io/my_io.h"
 
 int my_isneg(int n)
 {
