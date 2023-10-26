@@ -19,7 +19,8 @@ MATH_FUNCS := ./math/my_getnbr.c \
 			  ./math/my_is_prime.c \
 			  ./math/my_find_prime_sup.c \
 			  ./math/my_compute_power_rec.c \
-			  ./math/my_compute_square_root.c
+			  ./math/my_compute_square_root.c \
+			  ./math/nbrlen.c \
 
 SORT_FUNCS := ./sort/my_swap.c \
 			  ./sort/my_sort_int_array.c
@@ -31,7 +32,8 @@ STDIO_FUNCS := ./stdio/my_putstr.c \
 			   ./stdio/my_putchar_error.c
 
 STDIO_FUNCS_PRINTF := ./stdio/printf/my_printf.c \
-					  ./stdio/printf/arguments_tab.c
+					  ./stdio/printf/arguments_tab.c \
+					  ./stdio/printf/decimal_conversion.c
 
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
@@ -79,7 +81,6 @@ $(NAME): $(OBJ)
 	@mkdir -p $(LIB_DIR)
 	@cp $@ $(LIB_DIR)
 	@mkdir -p $(INCLUDE_DIR)
-	@cp -r ./math/my_math.h $(INCLUDE_DIR)
 	@cp -r ./sort/my_sort.h $(INCLUDE_DIR)
 	@cp -r ./ctype/my_ctype.h $(INCLUDE_DIR)
 	@cp -r ./stdio/my_stdio.h $(INCLUDE_DIR)
@@ -91,6 +92,9 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+
+debug: CFLAGS += -ggdb3
+debug: all
 
 re:	fclean
 	all
