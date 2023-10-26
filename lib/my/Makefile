@@ -19,20 +19,22 @@ MATH_FUNCS := ./math/my_getnbr.c \
 			  ./math/my_is_prime.c \
 			  ./math/my_find_prime_sup.c \
 			  ./math/my_compute_power_rec.c \
-			  ./math/my_compute_square_root.c
+			  ./math/my_compute_square_root.c \
+			  ./math/nbrlen.c \
 
 SORT_FUNCS := ./sort/my_swap.c \
 			  ./sort/my_sort_int_array.c
 
 IO_FUNCS := ./io/my_putstr.c \
-			   ./io/my_put_nbr.c \
-			   ./io/my_putchar.c \
-			   ./io/my_putstr_error.c \
-			   ./io/my_putchar_error.c \
-			   ./io/my_put_float.c
+			./io/my_put_nbr.c \
+			./io/my_putchar.c \
+			./io/my_putstr_error.c \
+			./io/my_putchar_error.c \
+			./io/my_put_float.c
 
-IO_FUNCS_PRINTF := ./io/printf/my_printf.c \
-					  ./io/printf/arguments_tab.c
+IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
+					./io/printf/arguments_tab.c \
+					./io/printf/decimal_conversion.c
 
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
@@ -92,6 +94,9 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+
+debug: CFLAGS += -ggdb3
+debug: all
 
 re:	fclean
 	all

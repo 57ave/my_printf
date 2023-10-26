@@ -14,3 +14,10 @@
 
 # Executables
 *.out
+
+# main
+main.c
+
+#valgrind
+
+vgcore*

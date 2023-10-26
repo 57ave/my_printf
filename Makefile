@@ -26,8 +26,8 @@ clean:
 fclean: clean
 	rm -f $(TEST_NAME)
 
-debug: CFLAGS += -ggdb3
-debug: all
+debug:
+	make debug -C lib/my
 
 re: fclean all
 
