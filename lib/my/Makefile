@@ -30,7 +30,8 @@ IO_FUNCS := ./io/my_putstr.c \
 			./io/my_putchar.c \
 			./io/my_putstr_error.c \
 			./io/my_putchar_error.c \
-			./io/my_put_float.c
+			./io/my_put_float.c \
+			./io/my_put_exponent.c
 
 IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/arguments_tab.c \
