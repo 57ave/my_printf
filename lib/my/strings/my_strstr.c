@@ -7,7 +7,7 @@
 
 #include "strings/my_strings.h"
 #include <stddef.h>
-#include <stdio.h>
+#include "io/my_io.h"
 #include <strings.h>
 
 static int find_next_occurence(char *str, char const *to_find, int *index_occ)
