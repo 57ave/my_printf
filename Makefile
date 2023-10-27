@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-CFLAGS = -Wall -Wextra -Werror -I include/ -L lib/ -lmy
+CFLAGS = -Wall -Wextra -Werror -I include/ -L./lib/my -lmy
 
 TEST_FLAGS = -lcriterion --coverage
 
