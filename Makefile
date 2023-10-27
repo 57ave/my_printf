@@ -11,7 +11,8 @@ TEST_FLAGS = -lcriterion --coverage
 
 TEST_NAME = unit_tests
 
-TEST_SRC = tests/test_printf.c
+TEST_SRC = tests/test_printf.c \
+		   tests/test_put_float.c
 
 all:
 	make -C ./lib/my/
