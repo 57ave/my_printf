@@ -16,8 +16,9 @@ static int64_t my_round_float(double x, int precision)
     int64_t to_parse = x * (my_compute_power_rec(10, precision - 1));
     int64_t to_add = 0;
 
-    if (to_parse % 10 >= 5)
+    if (to_parse % 10 >= 5) {
         to_add = 1;
+    }
     to_parse /= 10;
     to_parse += to_add;
     return to_parse;
@@ -50,10 +51,12 @@ static int print_exponent(double x, int exponent)
 static void print_double(char *display, int str_index)
 {
     for (int i = 0; i < str_index; i++) {
-        if (i == 1)
+        if (i == 1) {
             my_putchar('.');
-        if (display[i] == '0' && display[i + 1] == '0')
+        }
+        if (display[i] == '0' && display[i + 1] == '0') {
             break;
+        }
         my_putchar(display[i]);
     }
 }
