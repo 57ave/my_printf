@@ -47,6 +47,17 @@ static int print_exponent(double x, uint8_t exponent)
     return count;
 }
 
+static void print_double(char *display, uint8_t str_index)
+{
+    for (uint8_t i = 0; i < str_index; i++) {
+        if (i == 1)
+            my_putchar('.');
+        if (display[i] == '0' && display[i + 1] == '0')
+            break;
+        my_putchar(display[i]);
+    }
+}
+
 int my_put_exponent(double x, uint8_t precision)
 {
     uint8_t str_index = 0;
@@ -61,13 +72,7 @@ int my_put_exponent(double x, uint8_t precision)
     }
     display[str_index] = '\0';
     my_revstr(display);
-    for (uint8_t i = 0; i < str_index; i++) {
-        if (i == 1)
-            my_putchar('.');
-        if (display[i] == '0' && display[i + 1] == '0')
-            break;
-        my_putchar(display[i]);
-    }
+    print_double(display, str_index);
     print_exponent(x, exponent);
     return my_strlen(display);
 }
