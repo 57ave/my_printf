@@ -17,4 +17,5 @@ int my_putstr(char const *str);
 int my_putstr_error(char const *str);
 int my_put_float(double x, int precision);
 int my_put_exponent(double x, int precision);
+int my_put_hexadecimal(int n, int is_upper);
 #endif /* MY_IO_H_ */
