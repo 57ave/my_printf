@@ -41,12 +41,23 @@ int get_specifier(conversion_specifier_t *, char const *fmt, int i_f, int i_a);
 /* Conversion functions */
 
 int decimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int float_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int exponent_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int hexadecimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int octal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int char_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 
 /* Tab of functions pointer associated to char for conversion */
 
 static const format_func_t FORMAT_TAB[] = {
     {'i', &decimal_conversion},
-    {'d', &decimal_conversion}
+    {'d', &decimal_conversion},
+    {'f', &float_conversion},
+    {'e', &exponent_conversion},
+    {'x', &hexadecimal_conversion},
+    {'X', &hexadecimal_conversion},
+    {'o', &octal_conversion},
+    {'c', &char_conversion}
 };
 
 #endif

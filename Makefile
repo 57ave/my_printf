@@ -24,6 +24,7 @@ clean:
 	make clean -C ./lib/my/
 
 fclean: clean
+	make fclean -C ./lib/my/
 	rm -f $(TEST_NAME)
 
 debug:
