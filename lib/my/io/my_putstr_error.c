@@ -5,7 +5,7 @@
 ** Displays each char of a str on the STDERR
 */
 
-#include "stdio/my_stdio.h"
+#include "io/my_io.h"
 #include <stddef.h>
 
 int my_putstr_error(char const *str)

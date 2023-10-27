@@ -10,7 +10,14 @@
 *.elf
 
 # Libraries
-*.la
+*.a
 
 # Executables
 *.out
+
+# main
+main.c
+
+#valgrind
+
+vgcore*

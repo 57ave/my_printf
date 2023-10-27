@@ -6,7 +6,7 @@
 */
 
 #include "strings/my_strings.h"
-#include "stdio/my_stdio.h"
+#include "io/my_io.h"
 #include "math/my_math.h"
 
 int my_put_nbr(int nb)
@@ -15,5 +15,5 @@ int my_put_nbr(int nb)
     char *result = my_putnbr_base(nb, dec_base);
 
     my_putstr(result);
-    return my_getnbr(result);
+    return my_strlen(result);
 }

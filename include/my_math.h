@@ -12,5 +12,4 @@ int my_compute_square_root(int n);
 int my_find_prime_sup(int n);
 int my_getnbr(char const *str);
 int my_is_prime(int n);
-int my_nbrlen(long long nbr);
 #endif /* MY_MATH_H_ */

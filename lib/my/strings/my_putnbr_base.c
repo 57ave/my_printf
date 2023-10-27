@@ -6,7 +6,7 @@
 */
 
 #include "strings/my_strings.h"
-#include "stdio/my_stdio.h"
+#include "io/my_io.h"
 #include <stddef.h>
 #include <sys/types.h>
 

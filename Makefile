@@ -5,31 +5,30 @@
 ## Makefile
 ##
 
-CPPFLAGS += -iquote "include"
+CFLAGS = -Wall -Wextra -Werror -I include/ -L lib/ -lmy
 
-CFLAGS = -Wall -Wextra
-
-TEST_FLAGS = --coverage -lcriterion
+TEST_FLAGS = -lcriterion --coverage
 
 TEST_NAME = unit_tests
 
-TEST_SRC = tests/test_printf.c \
+TEST_SRC = tests/test_printf.c
 
 all:
 	make -C ./lib/my/
 
 tests_run: all
-	$(CC) $(TEST_SRC) -o $(TEST_NAME) $(CFLAGS) $(TEST_FLAGS) $(CPPFLAGS)
+	gcc -o $(TEST_NAME) $(TEST_SRC) $(TEST_FLAGS) $(CFLAGS)
 	./$(TEST_NAME)
 
 clean:
 	make clean -C ./lib/my/
 
 fclean: clean
+	make fclean -C ./lib/my/
 	rm -f $(TEST_NAME)
 
-debug: CFLAGS += -ggdb3
-debug: all
+debug:
+	make debug -C lib/my
 
 re: fclean all
 
