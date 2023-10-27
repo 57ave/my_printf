@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include <sys/types.h>
 
-int64_t my_round_float(double x, uint8_t precision)
+int64_t my_round_float(double x, int precision)
 {
     int64_t to_parse = x * (my_compute_power_rec(10, precision + 1));
     int64_t to_add = 0;
@@ -23,9 +23,9 @@ int64_t my_round_float(double x, uint8_t precision)
     return to_parse;
 }
 
-int my_put_float(double x, uint8_t precision)
+int my_put_float(double x, int precision)
 {
-    uint8_t str_index = 0;
+    int str_index = 0;
     char display[SIZE_TO_HANDLE_DOUBLE];
     int64_t to_parse = my_round_float(x, precision);
 
@@ -36,7 +36,7 @@ int my_put_float(double x, uint8_t precision)
     }
     display[str_index] = '\0';
     my_revstr(display);
-    for (uint8_t i = 0; i < str_index; i++) {
+    for (int i = 0; i < str_index; i++) {
         if (str_index - i == precision)
             my_putchar('.');
         my_putchar(display[i]);
