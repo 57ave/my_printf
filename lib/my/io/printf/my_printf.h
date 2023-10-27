@@ -33,12 +33,16 @@ void **get_arg_tab(va_list ap, char const *format);
 /* Conversion functions */
 
 int decimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int float_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int exponent_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 
 /* Tab of functions pointer associated to char for conversion */
 
 static const format_func_t FORMAT_TAB[] = {
     {'i', &decimal_conversion},
-    {'d', &decimal_conversion}
+    {'d', &decimal_conversion},
+    {'f', &float_conversion},
+    {'e', &exponent_conversion}
 };
 
 #endif
