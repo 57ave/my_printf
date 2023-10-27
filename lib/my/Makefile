@@ -31,14 +31,19 @@ IO_FUNCS := ./io/my_putstr.c \
 			./io/my_putstr_error.c \
 			./io/my_putchar_error.c \
 			./io/my_put_float.c \
-			./io/my_put_exponent.c
+			./io/my_put_exponent.c \
+			./io/my_put_hexadecimal.c \
+			./io/my_put_octal.c
 
 IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/arguments_tab.c \
 					./io/printf/verify_flags.c \
 					./io/printf/decimal_conversion.c \
 					./io/printf/float_conversion.c \
-					./io/printf/exponent_conversion.c
+					./io/printf/exponent_conversion.c \
+					./io/printf/hexadecimal_conversion.c \
+					./io/printf/octal_conversion.c \
+					./io/printf/char_conversion.c
 
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
