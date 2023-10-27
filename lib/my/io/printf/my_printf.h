@@ -35,6 +35,8 @@ void **get_arg_tab(va_list ap, char const *format);
 int is_real_flag(char const *format, int indice);
 int jump_flags(char const *format, int indice);
 int is_conversion_char(char current_char);
+int get_flag_char(conversion_specifier_t *, char const *format, int i_fmt);
+int get_specifier(conversion_specifier_t *, char const *fmt, int i_f, int i_a);
 
 /* Conversion functions */
 
