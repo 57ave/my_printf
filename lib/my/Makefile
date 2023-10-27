@@ -80,7 +80,7 @@ SRC := $(CTYPE_FUNCS) \
 	   $(STRINGS_FUNCS)
 CFLAGS := -Wall -Wextra -Werror -I .
 OBJ := $(SRC:.c=.o)
-LIB_DIR := ../
+LIB_DIR := ../../
 INCLUDE_DIR := ../../include/
 NAME := libmy.a
 
