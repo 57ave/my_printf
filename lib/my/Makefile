@@ -35,12 +35,11 @@ IO_FUNCS := ./io/my_putstr.c \
 
 IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/arguments_tab.c \
-
 					./io/printf/verify_flags.c \
 					./io/printf/decimal_conversion.c \
 					./io/printf/float_conversion.c \
 					./io/printf/exponent_conversion.c
-          
+
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
 				 ./strings/my_strcmp.c \
