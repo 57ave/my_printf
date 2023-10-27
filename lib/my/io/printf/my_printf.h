@@ -41,6 +41,7 @@ int is_conversion_char(char current_char);
 int decimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int float_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int exponent_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int hexadecimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 
 /* Tab of functions pointer associated to char for conversion */
 
@@ -48,7 +49,9 @@ static const format_func_t FORMAT_TAB[] = {
     {'i', &decimal_conversion},
     {'d', &decimal_conversion},
     {'f', &float_conversion},
-    {'e', &exponent_conversion}
+    {'e', &exponent_conversion},
+    {'x', &hexadecimal_conversion},
+    {'X', &hexadecimal_conversion}
 };
 
 #endif
