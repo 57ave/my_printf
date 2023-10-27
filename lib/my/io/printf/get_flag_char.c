@@ -26,7 +26,7 @@ int get_flags_size(char const *format, int i_fmt)
 {
     int size = 0;
 
-   while (is_flag_char(format[i_fmt])) {
+    while (is_flag_char(format[i_fmt])) {
         i_fmt++;
         size++;
     }
