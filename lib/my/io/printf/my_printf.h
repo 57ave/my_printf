@@ -43,6 +43,7 @@ int float_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int exponent_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int hexadecimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int octal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int char_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 
 /* Tab of functions pointer associated to char for conversion */
 
@@ -53,7 +54,8 @@ static const format_func_t FORMAT_TAB[] = {
     {'e', &exponent_conversion},
     {'x', &hexadecimal_conversion},
     {'X', &hexadecimal_conversion},
-    {'o', &octal_conversion}
+    {'o', &octal_conversion},
+    {'c', &char_conversion}
 };
 
 #endif
