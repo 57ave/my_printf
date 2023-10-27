@@ -30,6 +30,12 @@ typedef struct format_function_s {
 int my_printf(char const *format, ...);
 void **get_arg_tab(va_list ap, char const *format);
 
+/* Utils for running functions */
+
+int is_real_flag(char const *format, int indice);
+int jump_flags(char const *format, int indice);
+int is_conversion_char(char current_char);
+
 /* Conversion functions */
 
 int decimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
