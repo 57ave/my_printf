@@ -11,7 +11,7 @@
 #include <stdint.h>
 #include <sys/types.h>
 
-static int64_t my_round_float(double x, uint8_t precision)
+static int64_t my_round_float(double x, int precision)
 {
     int64_t to_parse = x * (my_compute_power_rec(10, precision - 1));
     int64_t to_add = 0;
@@ -23,7 +23,7 @@ static int64_t my_round_float(double x, uint8_t precision)
     return to_parse;
 }
 
-static int print_exponent(double x, uint8_t exponent)
+static int print_exponent(double x, int exponent)
 {
     int count = 0;
 
@@ -47,9 +47,9 @@ static int print_exponent(double x, uint8_t exponent)
     return count;
 }
 
-static void print_double(char *display, uint8_t str_index)
+static void print_double(char *display, int str_index)
 {
-    for (uint8_t i = 0; i < str_index; i++) {
+    for (int i = 0; i < str_index; i++) {
         if (i == 1)
             my_putchar('.');
         if (display[i] == '0' && display[i + 1] == '0')
@@ -58,12 +58,12 @@ static void print_double(char *display, uint8_t str_index)
     }
 }
 
-int my_put_exponent(double x, uint8_t precision)
+int my_put_exponent(double x, int precision)
 {
-    uint8_t str_index = 0;
+    int str_index = 0;
     char display[SIZE_TO_HANDLE_DOUBLE];
     int64_t to_parse = my_round_float(x, precision);
-    uint8_t exponent = my_nbrlen((long long) x) - 1;
+    int exponent = my_nbrlen((long long) x) - 1;
 
     while (to_parse != 0) {
         display[str_index] = (to_parse % 10) + '0';
