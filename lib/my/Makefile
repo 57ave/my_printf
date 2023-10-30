@@ -45,7 +45,8 @@ IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/exponent_conversion.c \
 					./io/printf/hexadecimal_conversion.c \
 					./io/printf/octal_conversion.c \
-					./io/printf/char_conversion.c
+					./io/printf/char_conversion.c \
+					./io/printf/string_conversion.c
 
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
