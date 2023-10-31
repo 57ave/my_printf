@@ -7,10 +7,12 @@
 
 #include "my_printf.h"
 #include "io/my_io.h"
+#include "ctype/my_ctype.h"
 
 int hexadecimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab)
 {
     int *hex_to_print = (int *) &arg_tab[conv_spec->indice_argument];
+    int is_upper = my_isupper((char) conv_spec->conversion_specifier);
 
-    return my_put_hexadecimal(*hex_to_print, 0);
+    return my_put_hexadecimal(*hex_to_print, is_upper);
 }
