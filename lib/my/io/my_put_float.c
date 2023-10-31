@@ -43,4 +43,3 @@ int my_put_float(double x, uint8_t precision)
     }
     return my_strlen(display);
 }
-
