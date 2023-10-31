@@ -10,7 +10,7 @@
 
 int string_conversion(conversion_specifier_t *conv_spec, void **arg_tab)
 {
-    char *str_to_print = (char *) &arg_tab[conv_spec->indice_argument];
+    char *str_to_print = (char *) arg_tab[conv_spec->indice_argument];
 
     return my_putstr(str_to_print);
 }
