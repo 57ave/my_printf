@@ -27,6 +27,7 @@ SORT_FUNCS := ./sort/my_swap.c \
 
 IO_FUNCS := ./io/my_putstr.c \
 			./io/my_put_nbr.c \
+			./io/my_put_nbr_unsigned.c \
 			./io/my_putchar.c \
 			./io/my_putstr_error.c \
 			./io/my_putchar_error.c \
@@ -39,6 +40,7 @@ IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/arguments_tab.c \
 					./io/printf/verify_flags.c \
 					./io/printf/decimal_conversion.c \
+					./io/printf/unsigned_conversion.c \
 					./io/printf/get_specifier.c \
 					./io/printf/get_flag_char.c \
 					./io/printf/float_conversion.c \
@@ -59,6 +61,7 @@ STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_str_islower.c \
 				 ./strings/my_str_isalpha.c \
 				 ./strings/my_putnbr_base.c \
+				 ./strings/my_putnbr_base_unsigned.c \
 				 ./strings/my_strlowcase.c \
 				 ./strings/my_strupcase.c \
 				 ./strings/my_str_isnum.c \
@@ -106,7 +109,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f ../$(NAME)
+	@rm -f ../../$(NAME)
 
 debug: CFLAGS += -ggdb3
 debug: all

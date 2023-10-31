@@ -41,6 +41,7 @@ int get_specifier(conversion_specifier_t *, char const *fmt, int i_f, int i_a);
 /* Conversion functions */
 
 int decimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int unsigned_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int float_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int exponent_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int hexadecimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
@@ -58,6 +59,7 @@ static const format_func_t FORMAT_TAB[] = {
     {'x', &hexadecimal_conversion},
     {'X', &hexadecimal_conversion},
     {'o', &octal_conversion},
+    {'u', &unsigned_conversion},
     {'c', &char_conversion},
     {'s', &string_conversion}
 };
