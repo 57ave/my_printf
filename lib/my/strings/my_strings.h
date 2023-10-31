@@ -8,6 +8,7 @@
 #ifndef MY_STRINGS_H_
     #define MY_STRINGS_H_
 char *my_putnbr_base(int n, const char *base);
+char *my_putnbr_base_unsigned(unsigned int n, const char *base);
 char *my_revstr(char *str);
 int my_showmem(char const *str, int size);
 int my_show_str(char const *str);
