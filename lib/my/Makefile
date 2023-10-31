@@ -39,6 +39,7 @@ IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/arguments_tab.c \
 					./io/printf/verify_flags.c \
 					./io/printf/decimal_conversion.c \
+					./io/printf/unsigned_conversion.c \
 					./io/printf/get_specifier.c \
 					./io/printf/get_flag_char.c \
 					./io/printf/float_conversion.c \
