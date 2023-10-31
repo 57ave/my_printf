@@ -34,6 +34,7 @@ IO_FUNCS := ./io/my_putstr.c \
 			./io/my_put_float.c \
 			./io/my_put_exponent.c \
 			./io/my_put_hexadecimal.c \
+			./io/my_put_pointer.c \
 			./io/my_put_octal.c
 
 IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
@@ -48,7 +49,8 @@ IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/hexadecimal_conversion.c \
 					./io/printf/octal_conversion.c \
 					./io/printf/char_conversion.c \
-					./io/printf/string_conversion.c
+					./io/printf/string_conversion.c \
+					./io/printf/pointer_conversion.c
 
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
@@ -62,6 +64,7 @@ STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_str_isalpha.c \
 				 ./strings/my_putnbr_base.c \
 				 ./strings/my_putnbr_base_unsigned.c \
+				 ./strings/my_putnbr_base_int64.c \
 				 ./strings/my_strlowcase.c \
 				 ./strings/my_strupcase.c \
 				 ./strings/my_str_isnum.c \
