@@ -10,7 +10,7 @@
 
 int unsigned_conversion(conversion_specifier_t *conv_spec, void **arg_tab)
 {
-    uint *unsigned_to_print = (uint *) &arg_tab[conv_spec->indice_argument];
+    int *unsigned_to_print = (int *) &arg_tab[conv_spec->indice_argument];
 
-    return my_put_nbr(*unsigned_to_print);
+    return my_put_nbr_unsigned((unsigned int) *unsigned_to_print);
 }
