@@ -50,7 +50,8 @@ IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/octal_conversion.c \
 					./io/printf/char_conversion.c \
 					./io/printf/string_conversion.c \
-					./io/printf/pointer_conversion.c
+					./io/printf/pointer_conversion.c \
+					./io/printf/flag_characters/alternate_form.c
 
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
