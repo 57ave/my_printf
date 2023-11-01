@@ -9,7 +9,8 @@
 #include "math/my_math.h"
 
 int get_field_value(conversion_specifier_t *conv_spec, char const *format
-        , int i_fmt) {
+    , int i_fmt)
+{
     int field_value = my_getnbr(&format[i_fmt]);
     int size_field_value = my_nbrlen(field_value);
 
@@ -24,7 +25,7 @@ int get_field_value(conversion_specifier_t *conv_spec, char const *format
 }
 
 int get_new_argument(conversion_specifier_t *conv_spec, char const *format
-        , int i_fmt)
+    , int i_fmt)
 {
     int size_of_argument = 0;
     int argument = my_getnbr(&format[i_fmt]);
@@ -39,7 +40,7 @@ int get_new_argument(conversion_specifier_t *conv_spec, char const *format
 }
 
 int get_field_width(conversion_specifier_t *conv_spec, char const *format
-        , int i_fmt)
+    , int i_fmt)
 {
     int field_width_size = 0;
 

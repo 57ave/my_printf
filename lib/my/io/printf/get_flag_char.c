@@ -38,6 +38,7 @@ int is_first_flag_char(char current_char)
 int get_flags_size(char const *format, int i_fmt)
 {
     int size = 0;
+
     if (!is_first_flag_char(format[i_fmt])) {
         return 0;
     }

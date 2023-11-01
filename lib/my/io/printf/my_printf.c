@@ -10,8 +10,8 @@
 #include "my_printf.h"
 #include "io/my_io.h"
 
-int format_handling(char const *format, int indice, void **arg_tab, 
-    conversion_specifier_t *conv_spec)
+int format_handling(char const *format, int indice, void **arg_tab
+    , conversion_specifier_t *conv_spec)
 {
     int fmt_tab_size = sizeof(FORMAT_TAB) / sizeof(FORMAT_TAB[0]);
     int size_read = 0;
@@ -28,9 +28,9 @@ int format_handling(char const *format, int indice, void **arg_tab,
 static int init_conversion_spec(char const *format, int index, void **arg_tab
     , int i_arg)
 {
-    int size_print= 0;
-    
+    int size_print = 0;
     conversion_specifier_t conv_spec;
+
     conv_spec.conversion_specifier = '\0';
     conv_spec.field_width = 0;
     conv_spec.flag_characters = NULL;
