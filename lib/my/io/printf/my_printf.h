@@ -39,6 +39,8 @@ int is_conversion_char(char current_char);
 int get_flag_char(conversion_specifier_t *, char const *format, int i_fmt);
 int get_specifier(conversion_specifier_t *, char const *fmt, int i_fmt);
 int get_field_width(conversion_specifier_t *, char const *format, int _imt);
+int get_precision(conversion_specifier_t *, char const *format, int i_fmt);
+
 /* Conversion functions */
 
 int decimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
