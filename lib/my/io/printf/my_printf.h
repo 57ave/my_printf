@@ -10,12 +10,15 @@
     #include <stddef.h>
     #include <stdarg.h>
 
+    #define DEFAULT_PRECISION 6
+
 /* Structure definition */
 
 typedef struct conversion_specifier {
     int indice_argument;
     char *flag_characters;
     int field_width;
+    int precision;
     int length_modifier;
     char conversion_specifier;
 } conversion_specifier_t;
@@ -36,17 +39,22 @@ int is_real_flag(char const *format, int indice);
 int jump_flags(char const *format, int indice);
 int is_conversion_char(char current_char);
 int get_flag_char(conversion_specifier_t *, char const *format, int i_fmt);
-int get_specifier(conversion_specifier_t *, char const *fmt, int i_f, int i_a);
+int get_specifier(conversion_specifier_t *, char const *fmt, int i_fmt);
+int get_field_width(conversion_specifier_t *, char const *format, int _imt);
+int get_precision(conversion_specifier_t *, char const *format, int i_fmt);
+int apply_nb_precision(conversion_specifier_t *conv_spec, long long nb);
 
 /* Conversion functions */
 
 int decimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int unsigned_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int float_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int exponent_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int hexadecimal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int octal_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int char_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 int string_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
+int pointer_conversion(conversion_specifier_t *conv_spec, void **arg_tab);
 
 /* Tab of functions pointer associated to char for conversion */
 
@@ -58,8 +66,10 @@ static const format_func_t FORMAT_TAB[] = {
     {'x', &hexadecimal_conversion},
     {'X', &hexadecimal_conversion},
     {'o', &octal_conversion},
+    {'u', &unsigned_conversion},
     {'c', &char_conversion},
-    {'s', &string_conversion}
+    {'s', &string_conversion},
+    {'p', &pointer_conversion}
 };
 
 #endif
