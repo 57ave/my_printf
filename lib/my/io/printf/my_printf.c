@@ -37,9 +37,9 @@ int call_format_handling(char const *format, void **arg_tab)
             id_arg++;
             continue;
         }
-        if (format[i_fmt] == '%' && format[i_fmt + 1] == '%') {
+        if (format[i_fmt] == '%') {
             my_putchar('%');
-            i_fmt += 2;
+            i_fmt += 1;
             continue;
         }
         my_putchar(format[i_fmt]);
