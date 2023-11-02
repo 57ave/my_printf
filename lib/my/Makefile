@@ -26,6 +26,7 @@ SORT_FUNCS := ./sort/my_swap.c \
 			  ./sort/my_sort_int_array.c
 
 IO_FUNCS := ./io/my_putstr.c \
+			./io/my_putnstr.c \
 			./io/my_put_nbr.c \
 			./io/my_put_nbr_unsigned.c \
 			./io/my_putchar.c \
