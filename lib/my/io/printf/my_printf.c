@@ -61,6 +61,11 @@ int call_format_handling(char const *format, void **arg_tab)
             i_a++;
             continue;
         }
+        if (format[i_fmt] == '%') {
+            my_putchar('%');
+            i_fmt += 1;
+            continue;
+        }
         i_fmt += handle_percent(format, i_fmt);
         my_putchar(format[i_fmt]);
         size_read += 1;

@@ -23,7 +23,7 @@ int64_t my_round_float(double x, int precision)
     return to_parse;
 }
 
-int my_put_float(double x, int precision)
+int my_put_float(double x, uint8_t precision)
 {
     int str_index = 0;
     char display[SIZE_TO_HANDLE_DOUBLE];
