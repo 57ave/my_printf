@@ -9,6 +9,20 @@
 #include "io/my_io.h"
 #include "ctype/my_ctype.h"
 #include "flag_characters.h"
+#include <stdio.h>
+
+static int is_alternate_needed(char *flag_characters)
+{
+    if (flag_characters == NULL) {
+        return 0;
+    }
+    for (int i = 0; flag_characters[i] != '\0'; i++) {
+        if (flag_characters[i] == '#') {
+            return 1;
+        }
+    }
+    return 0;
+}
 
 int alternate_hexadecimal(conversion_specifier_t *conv_spec)
 {
@@ -25,19 +39,37 @@ int alternate_hexadecimal(conversion_specifier_t *conv_spec)
     return char_printed;
 }
 
+int alternate_octal(unsigned int octal_nb)
+{
+    int char_printed = 0;
+
+    if (octal_nb > 0) {
+        my_putchar('0');
+        char_printed++;
+    }
+    return char_printed;
+}
+
 int alternate_form(conversion_specifier_t *conv_spec, void **arg_tab)
 {
     int char_printed = 0;
+    int *ptr_to_arg = 0;
     char conv_specifier = conv_spec->conversion_specifier;
 
+    if (!is_alternate_needed(conv_spec->flag_characters)) {
+            return char_printed;
+    }
     switch (my_tolower(conv_specifier)) {
         case 'x':
         case 'p':
             char_printed += alternate_hexadecimal(conv_spec);
             break;
+        case 'o':
+            ptr_to_arg = (int *) &arg_tab[conv_spec->indice_argument];
+            char_printed += alternate_octal(*ptr_to_arg);
+            break;
         default:
             alternate_form(conv_spec, arg_tab);
-            break;
     }
     return char_printed;
 }
