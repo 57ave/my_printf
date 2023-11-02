@@ -8,13 +8,17 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "my_printf.h"
-
+#include <stdio.h>
 int count_arguments(char const *format)
 {
     int count_arg = 0;
 
     for (int i = 0; format[i] != '\0'; i++) {
         if (is_real_flag(format, i)) {
+            count_arg++;
+        }
+        if (format[i] == '*' &&
+            (format[i - 1] == '$' || format[i - 1] == '%')) {
             count_arg++;
         }
     }
