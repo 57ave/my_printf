@@ -41,7 +41,7 @@ IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/decimal_conversion.c \
 					./io/printf/get_specifier.c \
 					./io/printf/get_flag_char.c \
-					./io/printf/field_widht.c \
+					./io/printf/field_width.c \
 					./io/printf/get_precision.c \
 					./io/printf/float_conversion.c \
 					./io/printf/exponent_conversion.c \
