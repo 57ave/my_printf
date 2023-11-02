@@ -20,7 +20,10 @@ MATH_FUNCS := ./math/my_getnbr.c \
 			  ./math/my_find_prime_sup.c \
 			  ./math/my_compute_power_rec.c \
 			  ./math/my_compute_square_root.c \
-			  ./math/my_nbrlen.c
+			  ./math/my_nbrlen.c \
+			  ./math/my_fabs.c \
+			  ./math/my_pow10.c \
+			  ./math/my_round.c
 
 SORT_FUNCS := ./sort/my_swap.c \
 			  ./sort/my_sort_int_array.c
