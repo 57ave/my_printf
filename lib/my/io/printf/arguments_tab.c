@@ -7,13 +7,14 @@
 
 #include <stdlib.h>
 #include <stdarg.h>
+#include "my_printf.h"
 
 int count_arguments(char const *format)
 {
     int count_arg = 0;
 
     for (int i = 0; format[i] != '\0'; i++) {
-        if (format[i] == '%' && format[i + 1] != '%') {
+        if (is_real_flag(format, i)) {
             count_arg++;
         }
     }
@@ -23,14 +24,16 @@ int count_arguments(char const *format)
 void **get_arg_tab(va_list ap, char const *format)
 {
     int tab_size = count_arguments(format);
-    void **arg_tab = malloc(sizeof(void *) * tab_size);
+    void **arg_tab = malloc(sizeof(void *) * (tab_size + 1));
+    int i = 0;
 
     if (arg_tab == NULL) {
         return NULL;
     }
-    for (int i = 0; i < tab_size; i++) {
+    for (; i < tab_size; i++) {
         arg_tab[i] = va_arg(ap, void *);
     }
+    arg_tab[i] = NULL;
     va_end(ap);
     return arg_tab;
 }
