@@ -43,6 +43,7 @@ int get_specifier(conversion_specifier_t *, char const *fmt, int i_fmt);
 int get_field_width(conversion_specifier_t *, char const *format, int _imt);
 int get_precision(conversion_specifier_t *, char const *format, int i_fmt);
 int apply_nb_precision(conversion_specifier_t *conv_spec, long long nb);
+int apply_str_precision(conversion_specifier_t *, char *str_to_print);
 
 /* Conversion functions */
 
