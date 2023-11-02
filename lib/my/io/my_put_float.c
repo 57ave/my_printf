@@ -8,13 +8,9 @@
 #include "my_io.h"
 #include "strings/my_strings.h"
 #include "math/my_math.h"
-#include <math.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <sys/types.h>
 
-static void int_to_str(long long n, char *str, uint8_t precision)
+static void int_to_str(char *str, long long n, int precision)
 {
     int i = 0;
 
@@ -29,23 +25,63 @@ static void int_to_str(long long n, char *str, uint8_t precision)
     my_revstr(str);
 }
 
-int my_put_float(double x, uint8_t precision)
+static void float_to_int_str(char *str, long long int_part, int is_negative)
 {
-    int char_printed = 0;
-    long long int_part = (long long) x;
-    double float_part = x - int_part;
-    int int_part_len = my_nbrlen(int_part);
-    char *display = malloc(int_part_len + precision + 2);
+    if (is_negative) {
+        *str++ = '-';
+        int_to_str(str, -int_part, 0);
+    } else {
+        int_to_str(str, int_part, 0);
+    }
+}
 
-    int_to_str(int_part, display, 0);
+static void float_to_frac_str(char *str, double frac_part, int precision)
+{
+    long long int_frac_part = my_round(frac_part * my_pow10(precision));
+
+    int_to_str(str, int_frac_part, precision);
+}
+
+static void assemble_str(char *display, double x, int precision)
+{
+    int is_negative = x < 0;
+    int int_part_len = 0;
+    double exp_factor = 0;
+    double frac_part = 0;
+    long long int_part = 0;
+
+    x = my_fabs(x);
+    exp_factor = my_round(x * my_pow10(precision));
+    int_part = (long long) (exp_factor / my_pow10(precision));
+    frac_part = (exp_factor - int_part * my_pow10(precision))
+        / my_pow10(precision);
+    float_to_int_str(display, int_part, is_negative);
+    int_part_len = my_strlen(display);
     if (precision > 0) {
         display[int_part_len] = '.';
-        float_part = float_part * my_compute_power_rec(10, precision);
-        float_part = float_part + 0.5;
-        int_to_str(float_part, display + int_part_len + 1, precision);
+        float_to_frac_str(display + int_part_len + 1, frac_part, precision);
     }
-    my_putstr(display);
-    char_printed = my_strlen(display);
+}
+
+int my_put_float(double x, int precision)
+{
+    int display_size = 1;
+    int is_negative = x < 0;
+    int char_printed = 0;
+    char *display;
+
+    if (is_negative) {
+        display_size++;
+    }
+    if (precision > 0) {
+        display_size += precision + 1;
+    }
+    display = (char *) malloc(display_size);
+    if (display == NULL) {
+        return 0;
+    }
+    assemble_str(display, x, precision);
+    char_printed = my_putstr(display);
     free(display);
     return char_printed;
 }
