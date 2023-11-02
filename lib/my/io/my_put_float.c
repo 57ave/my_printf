@@ -8,38 +8,44 @@
 #include "my_io.h"
 #include "strings/my_strings.h"
 #include "math/my_math.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
 #include <sys/types.h>
 
-int64_t my_round_float(double x, int precision)
+static void int_to_str(long long n, char *str, uint8_t precision)
 {
-    int64_t to_parse = x * (my_compute_power_rec(10, precision + 1));
-    int64_t to_add = 0;
+    int i = 0;
 
-    if (to_parse % 10 >= 5)
-        to_add = 1;
-    to_parse /= 10;
-    to_parse += to_add;
-    return to_parse;
+    while (n > 0) {
+        str[i++] = (n % 10) + '0';
+        n = n / 10;
+    }
+    while (i < precision) {
+        str[i++] = '0';
+    }
+    str[i] = '\0';
+    my_revstr(str);
 }
 
 int my_put_float(double x, uint8_t precision)
 {
-    int str_index = 0;
-    char display[SIZE_TO_HANDLE_DOUBLE];
-    int64_t to_parse = my_round_float(x, precision);
+    int char_printed = 0;
+    long long int_part = (long long) x;
+    double float_part = x - int_part;
+    int int_part_len = my_nbrlen(int_part);
+    char *display = malloc(int_part_len + precision + 2);
 
-    while (to_parse != 0) {
-        display[str_index] = (to_parse % 10) + '0';
-        to_parse /= 10;
-        str_index++;
+    int_to_str(int_part, display, 0);
+    if (precision > 0) {
+        display[int_part_len] = '.';
+        float_part = float_part * my_compute_power_rec(10, precision);
+        float_part = float_part + 0.5;
+        int_to_str(float_part, display + int_part_len + 1, precision);
     }
-    display[str_index] = '\0';
-    my_revstr(display);
-    for (int i = 0; i < str_index; i++) {
-        if (str_index - i == precision)
-            my_putchar('.');
-        my_putchar(display[i]);
-    }
-    return my_strlen(display);
+    my_putstr(display);
+    char_printed = my_strlen(display);
+    free(display);
+    return char_printed;
 }
