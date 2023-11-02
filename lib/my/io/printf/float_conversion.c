@@ -14,7 +14,7 @@ int float_conversion(conversion_specifier_t *conv_spec, void **arg_tab)
     int precision = conv_spec->precision;
 
     if (precision == 0) {
-        precision = 6;
+        precision = DEFAULT_PRECISION;
     }
     return my_put_float(*double_to_print, precision);
 }

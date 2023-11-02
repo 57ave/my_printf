@@ -6,6 +6,19 @@
 */
 #include "my_printf.h"
 #include "math/my_math.h"
+#include "io/my_io.h"
+
+int apply_nb_precision(conversion_specifier_t *conv_spec, long long nb)
+{
+    int size = my_nbrlen(nb);
+    int tmp = size;
+
+    while (tmp < conv_spec->precision) {
+        my_putchar('0');
+        tmp++;
+    }
+    return size - tmp;
+}
 
 int get_precision(conversion_specifier_t *conv_spec, char const *format
     , int i_fmt)
