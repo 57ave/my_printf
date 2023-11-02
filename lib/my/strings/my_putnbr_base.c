@@ -14,6 +14,9 @@ static void convert_to_str(char *str, const char *base, size_t len, uint n)
 {
     int i = 0;
 
+    if (n == 0) {
+        str[i++] = '0';
+    }
     for (; n > 0; i++) {
         str[i] = base[n % len];
         n /= len;
