@@ -4,6 +4,7 @@
 ** File description:
 ** Header for my strings lib
 */
+#include <stddef.h>
 
 #ifndef MY_STRINGS_H_
     #define MY_STRINGS_H_
@@ -33,4 +34,5 @@ char *my_strndup(char const *src, int n);
 char *my_strstr(char *str, char const *to_find);
 char **my_str_to_word_array(const char *str);
 char *my_strupcase(char *str);
+void *my_memcpy(void *dest, const void *src, size_t n);
 #endif /* MY_STRINGS_H_ */
