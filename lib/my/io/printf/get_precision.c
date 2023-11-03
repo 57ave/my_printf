@@ -13,7 +13,10 @@ int apply_str_precision(conversion_specifier_t *conv_spec, char *str)
 {
     int size_str = my_strlen(str);
 
-    if (size_str <= conv_spec->precision) {
+    if (conv_spec->precision == -1) {
+        return size_str;
+    }
+    if (size_str < conv_spec->precision) {
         return size_str;
     }
     return conv_spec->precision;
@@ -35,6 +38,7 @@ int get_precision(conversion_specifier_t *conv_spec, char const *format
     , int i_fmt)
 {
     if (format[i_fmt] != '.') {
+        conv_spec->precision = -1;
         return 0;
     }
     i_fmt += 1;
