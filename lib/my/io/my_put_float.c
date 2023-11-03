@@ -8,38 +8,80 @@
 #include "my_io.h"
 #include "strings/my_strings.h"
 #include "math/my_math.h"
-#include <stdint.h>
-#include <sys/types.h>
+#include <stdlib.h>
 
-int64_t my_round_float(double x, int precision)
+static void int_to_str(char *str, long long n, int precision)
 {
-    int64_t to_parse = x * (my_compute_power_rec(10, precision + 1));
-    int64_t to_add = 0;
+    int i = 0;
 
-    if (to_parse % 10 >= 5)
-        to_add = 1;
-    to_parse /= 10;
-    to_parse += to_add;
-    return to_parse;
+    while (n > 0) {
+        str[i++] = (n % 10) + '0';
+        n = n / 10;
+    }
+    while (i < precision) {
+        str[i++] = '0';
+    }
+    str[i] = '\0';
+    my_revstr(str);
 }
 
-int my_put_float(double x, uint8_t precision)
+static void float_to_int_str(char *str, long long int_part, int is_negative)
 {
-    int str_index = 0;
-    char display[SIZE_TO_HANDLE_DOUBLE];
-    int64_t to_parse = my_round_float(x, precision);
+    if (is_negative) {
+        *str++ = '-';
+        int_to_str(str, -int_part, 0);
+    } else {
+        int_to_str(str, int_part, 0);
+    }
+}
 
-    while (to_parse != 0) {
-        display[str_index] = (to_parse % 10) + '0';
-        to_parse /= 10;
-        str_index++;
+static void float_to_frac_str(char *str, double frac_part, int precision)
+{
+    long long int_frac_part = my_round(frac_part * my_pow10(precision));
+
+    int_to_str(str, int_frac_part, precision);
+}
+
+static void assemble_str(char *display, double x, int precision)
+{
+    int is_negative = x < 0;
+    int int_part_len = 0;
+    double exp_factor = 0;
+    double frac_part = 0;
+    long long int_part = 0;
+
+    x = my_fabs(x);
+    exp_factor = my_round(x * my_pow10(precision));
+    int_part = (long long) (exp_factor / my_pow10(precision));
+    frac_part = (exp_factor - int_part * my_pow10(precision))
+        / my_pow10(precision);
+    float_to_int_str(display, int_part, is_negative);
+    int_part_len = my_strlen(display);
+    if (precision > 0) {
+        display[int_part_len] = '.';
+        float_to_frac_str(display + int_part_len + 1, frac_part, precision);
     }
-    display[str_index] = '\0';
-    my_revstr(display);
-    for (int i = 0; i < str_index; i++) {
-        if (str_index - i == precision)
-            my_putchar('.');
-        my_putchar(display[i]);
+}
+
+int my_put_float(double x, int precision)
+{
+    int display_size = 1;
+    int is_negative = x < 0;
+    int char_printed = 0;
+    char *display;
+
+    if (is_negative) {
+        display_size++;
     }
-    return my_strlen(display);
+    if (precision > 0) {
+        display_size += precision + 1;
+    }
+    display = (char *) malloc(display_size);
+    if (display == NULL) {
+        return 0;
+    }
+    assemble_str(display, x, precision);
+    char_printed = my_putstr(display);
+    free(display);
+    return char_printed;
 }
