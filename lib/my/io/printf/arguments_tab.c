@@ -26,7 +26,6 @@ int count_arguments(char const *format)
     return count_arg;
 }
 
-#include "stdio.h"
 char *get_type(char const *format, int tab_size)
 {
     int count_arg = 0;
@@ -44,32 +43,39 @@ char *get_type(char const *format, int tab_size)
         }
     }
     type[count_arg] = '\0';
-    printf("type %s\n", type);
     return type;
 }
-void **get_arg_tab(va_list ap, char const *format)
+
+int fill_tab(void **arg_tab, int tab_size, va_list ap, char const *format)
 {
-    int tab_size = count_arguments(format);
     char *type = get_type(format, tab_size);
-    void **arg_tab = malloc(sizeof(void *) * (tab_size + 1));
     int i = 0;
     double tmp = 0;
 
-    if (arg_tab == NULL)
-        return NULL;
     for (; i < tab_size; i++) {
-        switch (type[i])
-        {
+        switch (type[i]) {
         case 'f':
             tmp = va_arg(ap, double);
+            arg_tab[i] = malloc(sizeof(&tmp));
             arg_tab[i] = my_memcpy(arg_tab[i], &tmp, sizeof(&tmp));
             break;
-        default:    
+        default:
             arg_tab[i] = va_arg(ap, void *);
-            break;
         }
     }
-    arg_tab[i] = NULL;
+    return i;
+}
+
+void **get_arg_tab(va_list ap, char const *format)
+{
+    int tab_size = count_arguments(format);
+    void **arg_tab = malloc(sizeof(void *) * (tab_size + 1));
+    int arg_len = 0;
+
+    if (arg_tab == NULL)
+        return NULL;
+    arg_len = fill_tab(arg_tab, tab_size, ap, format);
+    arg_tab[arg_len] = NULL;
     va_end(ap);
     return arg_tab;
 }
