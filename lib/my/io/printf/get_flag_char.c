@@ -12,8 +12,7 @@
 
 int is_flag_char(char current_char)
 {
-    char const flags_chars[] = {'#', '0', '1', '2', '3', '4', '5', '6', '7'
-        , '8', '9', ' ', '+'};
+    char const flags_chars[] = {'#', '0', ' ', '+', '-'};
 
     for (int i_flag = sizeof(flags_chars); i_flag > 0; i_flag--) {
         if (current_char == flags_chars[i_flag - 1]) {
@@ -25,7 +24,7 @@ int is_flag_char(char current_char)
 
 int is_first_flag_char(char current_char)
 {
-    char const first_flags_chars[] = {'#', '0', ' ', '+'};
+    char const first_flags_chars[] = {'#', '0', ' ', '+', '-'};
 
     for (int i_flag = sizeof(first_flags_chars); i_flag > 0; i_flag--) {
         if (current_char == first_flags_chars[i_flag - 1]) {

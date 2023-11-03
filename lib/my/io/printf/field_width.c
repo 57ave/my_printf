@@ -15,7 +15,7 @@ int get_field_value(conversion_specifier_t *conv_spec, char const *format
     int size_field_value = my_nbrlen(field_value);
 
     if (size_field_value == 0) {
-        *arg_tab+=1;
+        *arg_tab += 1;
         size_field_value += 1;
     } else {
         size_field_value += 1;
@@ -42,7 +42,7 @@ int get_new_argument(conversion_specifier_t *conv_spec, char const *format
         , arg_tab) + 1;
     }
     conv_spec->indice_argument = argument;
-    *arg_tab-=1;
+    *arg_tab -= 1;
     return size_of_argument;
 }
 

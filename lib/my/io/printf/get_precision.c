@@ -13,7 +13,7 @@ int apply_str_precision(conversion_specifier_t *conv_spec, char *str)
 {
     int size_str = my_strlen(str);
 
-    if (size_str < conv_spec->precision) {
+    if (size_str <= conv_spec->precision) {
         return size_str;
     }
     return conv_spec->precision;
