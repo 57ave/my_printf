@@ -11,6 +11,10 @@
 int exponent_conversion(conversion_specifier_t *conv_spec, void **arg_tab)
 {
     double *double_to_print = (double *) &arg_tab[conv_spec->indice_argument];
+    int precision = conv_spec->precision;
 
-    return my_put_exponent(*double_to_print, 6);
+    if (precision == 0) {
+        precision = DEFAULT_PRECISION;
+    }
+    return my_put_exponent(*double_to_print, precision);
 }

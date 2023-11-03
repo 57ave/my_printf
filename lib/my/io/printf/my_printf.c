@@ -10,22 +10,22 @@
 #include "my_printf.h"
 #include "io/my_io.h"
 
-int format_handling(char const *format, int indice, void **arg_tab
+int format_handling(char const *format, int indice, void ***arg_tab
     , conversion_specifier_t *conv_spec)
 {
     int fmt_tab_size = sizeof(FORMAT_TAB) / sizeof(FORMAT_TAB[0]);
     int size_read = 0;
 
-    indice = get_specifier(conv_spec, format, indice);
+    indice = get_specifier(conv_spec, format, indice, arg_tab);
     for (int i = 0; i < fmt_tab_size; i++) {
         if (FORMAT_TAB[i].format_char == conv_spec->conversion_specifier) {
-            size_read += FORMAT_TAB[i].pf(conv_spec, arg_tab);
+            size_read += FORMAT_TAB[i].pf(conv_spec, *arg_tab);
         }
     }
     return size_read;
 }
 
-static int init_conversion_spec(char const *format, int index, void **arg_tab
+static int init_conversion_spec(char const *format, int index, void ***arg_tab
     , int i_arg)
 {
     int size_print = 0;
@@ -49,14 +49,14 @@ static int handle_percent(char const *format, int i_fmt)
     return 0;
 }
 
-int call_format_handling(char const *format, void **arg_tab)
+int call_format_handling(char const *format, void **argtab)
 {
     int size_read = 0;
     int i_a = 0;
 
     for (int i_fmt = 0; format[i_fmt] != '\0'; i_fmt++) {
         if (is_real_flag(format, i_fmt)) {
-            size_read += init_conversion_spec(format, i_fmt + 1, arg_tab, i_a);
+            size_read += init_conversion_spec(format, i_fmt + 1, &argtab, i_a);
             i_fmt += jump_flags(format, i_fmt + 1);
             i_a++;
             continue;

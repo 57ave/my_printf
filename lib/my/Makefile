@@ -29,6 +29,7 @@ SORT_FUNCS := ./sort/my_swap.c \
 			  ./sort/my_sort_int_array.c
 
 IO_FUNCS := ./io/my_putstr.c \
+			./io/my_putnstr.c \
 			./io/my_put_nbr.c \
 			./io/my_put_nbr_unsigned.c \
 			./io/my_putchar.c \
@@ -56,7 +57,9 @@ IO_FUNCS_PRINTF := 	./io/printf/my_printf.c \
 					./io/printf/char_conversion.c \
 					./io/printf/string_conversion.c \
 					./io/printf/pointer_conversion.c \
-					./io/printf/flag_characters/alternate_form.c
+					./io/printf/flag_characters/alternate_form.c \
+					./io/printf/flag_characters/padding.c \
+					./io/printf/flag_characters/put_padding.c
 
 STRINGS_FUNCS := ./strings/my_revstr.c \
 				 ./strings/my_strcat.c \
